@@ -35,6 +35,10 @@ namespace kcapi_in_csharp_impl.Util {
 			return int.Parse( get( pattern ).Match( value.ToString() ).Value );
 		}
 
+		public static string substr(this string str, int start, int length ) {
+			return str.Substring( ( start < 0 ? start + str.Length : start ), length );
+		}
+
 	}
 
 }

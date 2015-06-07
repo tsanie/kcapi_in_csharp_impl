@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using kcapi_in_csharp_impl.Util;
+using System.Dynamic;
 
 namespace kcapi_in_csharp_impl.connection.api_port {
 
@@ -13,7 +14,7 @@ namespace kcapi_in_csharp_impl.connection.api_port {
 		// ~([][{}]) = -1
 		// -1 >>> -1 =  1
 
-		public static readonly int[] Il = {
+		private static readonly int[] Il = {
 			((("...$".i("....".i(~((-1 << -1)))) << ".".i("...$".i(~((-1 << -1))))) | (".".i("..$".i(~((-1 << -1)))) | (1))) | ".$".i((-1 << -1))),
 			((("...".i(~((-1 << -1))) >> ".".i(~((-1 << -1)))) << ".".i("...$".i(~((-1 << -1))))) | ".".i(~((-1 << -1)))),
 			(((("..".i(~((-1 << -1))) << ".".i("...$".i(~((-1 << -1))))) | "..".i(~((-1 << -1)))) << ".".i(~((-1 << -1)))) | ".".i("....$".i(~((-1 << -1))))),
@@ -33,6 +34,64 @@ namespace kcapi_in_csharp_impl.connection.api_port {
 			(("..$".i("...".i(~((-1 << -1)))) << ".".i("...$".i(~((-1 << -1))))) | (("...".i(~((-1 << -1))) >> ".".i("....$".i(~((-1 << -1))))) << ".".i(~((-1 << -1))))),
 			(((((".......$".i(~((-1 << -1))) >> (".$".i(~((-1 << -1))) << (1))) << (".".i("....$".i(~((-1 << -1)))) << ".".i(~((-1 << -1))))) | ("..".i("......$".i(~((-1 << -1)))) >> (1))) | (1)) | (("....".i(".....$".i(~((-1 << -1)))) >> ".".i("....$".i(~((-1 << -1))))) << ".".i("....$".i(~((-1 << -1))))))
 		};
+
+		private static readonly Random rand = new Random();
+
+		private dynamic _createKey() {
+			dynamic key = new ExpandoObject();
+			key.b = (Func<string, int>)( p1 => p1.Length );
+			key.r = (Func<double, int>)( p1 => (int)Math.Floor( p1 ) );
+			key.i = (Func<int, int>)( p1 => key.r( rand.NextDouble() * p1 ) );
+			key.j = (Func<int>)( () => 8 );
+			key.k = (Func<double, double, double>)( ( p1, p2 ) => (int)p1 ^ (int)p2 );
+			key.l = (Func<string, int, int, double>)( ( p1, p2, p3 ) => {
+				double d;
+				if ( double.TryParse( p1.substr( p2, p3 ), out d ) ) {
+					return d;
+				}
+				return double.NaN;
+			} );
+			key.m = (Func<double, double, double>)( ( p1, p2 ) => p1 - p2 );
+			key.n = (Func<double>)( () => key.r( DateTime.Now.getTime() / 1000 ) );
+			key.o = (Func<double, double, double>)( ( p1, p2 ) => p2 / p1 );
+			key.p = (Func<double, double, double>)( ( p1, p2 ) => p2 % p1 );
+			key.q = (Func<double>)( () => 1.44269504088896 );
+			key.s = (Func<object, string>)( p1 => p1.ToString() );
+			key.t = (Func<object[], string>)( ps => string.Join( "", ps ) );
+			key.u = (Func<double, double, double>)( ( p1, p2 ) => p1 + p2 );
+			key.v = (Func<int>)( () => 16 );
+			key.w = (Func<int>)( () => 2 );
+			key.x = (Func<int>)( () => 4 );
+			key.y = (Func<int, double>)( p1 => Math.Sqrt( p1 ) );
+			key.z = (Func<double, double, double>)( ( p1, p2 ) => p1 * p2 );
+			return ( key );
+		}
+
+		private int I1( int II, dynamic lI ) {
+			int _local_3 = 0;
+			while ( II != lI.l( lI.s( lI.y( Il[Il[( ( ".$".i( ( -1 << -1 ) ) | lI.x() ) | 1 )]] ) ), _local_3, 1 ) ) {
+				_local_3++;
+			};
+			return ( _local_3 );
+		}
+
+		private string __( double ll, dynamic lI ) {
+			string _local_4;
+			var _local_5 = "[object PortAPI]";  // this
+			int _local_3 = (int)lI.u( lI.i( ( "..".i( "...$".i( ~( ( -1 << -1 ) ) ) ) << ( ".$".i( ( -1 << -1 ) ) | 1 ) ) ), ( ".$".i( ( -1 << -1 ) ) << ( ".".i( "....$".i( ~( ( -1 << -1 ) ) ) ) << ".".i( ~( ( -1 << -1 ) ) ) ) ) );
+			_local_4 = lI.t( new object[] {
+				lI.s( lI.u( lI.z( lI.u( lI.i( ( ".$".i( ( -1 << -1 ) ) | 1 ) ), 1 ), Il[lI.b( lI.s( _local_5 ) )] ), lI.l( lI.s( ll ), (int)lI.m( lI.w(), ( ".".i( "..$".i( ~( ( -1 << -1 ) ) ) ) | 1 ) ), ".".i( "....$".i( ~( ( -1 << -1 ) ) ) ) ) ) ),
+				lI.z( lI.m( lI.u( lI.m( lI.z( lI.u( Il[( ".".i( "..$".i( ~( ( -1 << -1 ) ) ) ) | 1 )], _local_3 ), lI.u( lI.l( lI.s( ll ), ~( -1 ), lI.x() ), Il[lI.b( lI.s( _local_5 ) )] ) ), lI.n() ), lI.u( Il[( ( ".$".i( ( -1 << -1 ) ) << 1 ) | 1 )], lI.z( ( ".$".i( ( -1 << -1 ) ) | 1 ), _local_3 ) ) ), ll ), Il[I1( (int)lI.p( ( ".$".i( ( -1 << -1 ) ) | ".".i( ~( ( -1 << -1 ) ) ) ), ll ), lI )] ),
+				lI.s( lI.u( lI.i( (int)lI.z( ( ".$".i( ( -1 << -1 ) ) | 1 ), Il[(int)lI.z( lI.j(), ".".i( ~( ( -1 << -1 ) ) ) )] ) ), Il[lI.v()] ) ),
+				_local_3
+			} );
+			return ( _local_4 );
+		}
+
+		public string GetApiPort(int memberId ) {
+			var key = _createKey();
+			return __( memberId, key );
+		}
 
 	}
 
